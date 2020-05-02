@@ -51,7 +51,7 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::prefix('/admin')->group(function () {
+Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::get('/', function () {
        return view('admin/index');
     });
@@ -60,3 +60,6 @@ Route::prefix('/admin')->group(function () {
        return view('admin/products');
     });
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
