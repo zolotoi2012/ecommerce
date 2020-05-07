@@ -56,9 +56,9 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
        return view('admin/index');
     });
 
-    Route::get('/products', function () {
-       return view('admin/products');
-    });
+    Route::resource('products', 'Products\ProductsController');
+    Route::resource('categories', 'Categories\CategoriesController');
+    Route::resource('brands', 'Brands\BrandsController');
 });
 Auth::routes();
 
