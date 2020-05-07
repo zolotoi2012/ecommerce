@@ -1,159 +1,151 @@
-@extends('components.preloader')
-@extends('components.scripts')
-@extends('components.footer')
-@component('components.header')
-@endcomponent
-@component('components.slider')
-@endcomponent
+@extends('components.header')
+@section('styles')
+    @parent
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/cart.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('styles/cart_responsive.css') }}">
+@endsection
 
-<!--================Cart Area =================-->
-<section class="cart_area section_padding">
-    <div class="container">
-        <div class="cart_inner">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="{{ asset('assets/img/arrivel/arrivel_1.png') }}" alt="" />
-                                </div>
-                                <div class="media-body">
-                                    <p>Minimalistic shop for multipurpose use</p>
-                                </div>
+@yield('styles')
+
+<div class="super_container">
+    @component('components.menu')
+    @endcomponent
+
+    @component('components.home')
+    @endcomponent
+
+    <div class="cart_info">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <!-- Column Titles -->
+                    <div class="cart_info_columns clearfix">
+                        <div class="cart_info_col cart_info_col_product">Product</div>
+                        <div class="cart_info_col cart_info_col_price">Price</div>
+                        <div class="cart_info_col cart_info_col_quantity">Quantity</div>
+                        <div class="cart_info_col cart_info_col_total">Total</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row cart_items_row">
+                <div class="col">
+
+                    <!-- Cart Item -->
+                    <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                        <!-- Name -->
+                        <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+                            <div class="cart_item_image">
+                                <div><img src="images/cart_1.jpg" alt=""></div>
                             </div>
-                        </td>
-                        <td>
-                            <h5>$360.00</h5>
-                        </td>
-                        <td>
-                            <div class="product_count">
-                                <!-- <input type="text" value="1" min="0" max="10" title="Quantity:"
-                                  class="input-text qty input-number" />
-                                <button
-                                  class="increase input-number-increment items-count" type="button">
-                                  <i class="ti-angle-up"></i>
-                                </button>
-                                <button
-                                  class="reduced input-number-decrement items-count" type="button">
-                                  <i class="ti-angle-down"></i>
-                                </button> -->
-                                <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                <input class="input-number" type="text" value="1" min="0" max="10">
-                                <span class="input-number-increment"> <i class="ti-plus"></i></span>
+                            <div class="cart_item_name_container">
+                                <div class="cart_item_name"><a href="#">Smart Phone Deluxe Edition</a></div>
+                                <div class="cart_item_edit"><a href="#">Edit Product</a></div>
                             </div>
-                        </td>
-                        <td>
-                            <h5>$720.00</h5>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img src="{{ asset('assets/img/arrivel/arrivel_2.png') }}" alt="" />
-                                </div>
-                                <div class="media-body">
-                                    <p>Minimalistic shop for multipurpose use</p>
+                        </div>
+                        <!-- Price -->
+                        <div class="cart_item_price">$790.90</div>
+                        <!-- Quantity -->
+                        <div class="cart_item_quantity">
+                            <div class="product_quantity_container">
+                                <div class="product_quantity clearfix">
+                                    <span>Qty</span>
+                                    <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                    <div class="quantity_buttons">
+                                        <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                                        <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                                    </div>
                                 </div>
                             </div>
-                        </td>
-                        <td>
-                            <h5>$360.00</h5>
-                        </td>
-                        <td>
-                            <div class="product_count">
-                                <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                                <input class="input-number" type="text" value="1" min="0" max="10">
-                                <span class="input-number-increment"> <i class="ti-plus"></i></span>
-                            </div>
-                        </td>
-                        <td>
-                            <h5>$720.00</h5>
-                        </td>
-                    </tr>
-                    <tr class="bottom_button">
-                        <td>
-                            <a class="btn_1" href="#">Update Cart</a>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <div class="cupon_text float-right">
-                                <a class="btn_1" href="#">Close Coupon</a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <h5>Subtotal</h5>
-                        </td>
-                        <td>
-                            <h5>$2160.00</h5>
-                        </td>
-                    </tr>
-                    <tr class="shipping_area">
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <h5>Shipping</h5>
-                        </td>
-                        <td>
-                            <div class="shipping_box">
-                                <ul class="list">
-                                    <li>
-                                        Flat Rate: $5.00
-                                        <input type="radio" aria-label="Radio button for following text input">
-                                    </li>
-                                    <li>
-                                        Free Shipping
-                                        <input type="radio" aria-label="Radio button for following text input">
-                                    </li>
-                                    <li>
-                                        Flat Rate: $10.00
-                                        <input type="radio" aria-label="Radio button for following text input">
-                                    </li>
-                                    <li class="active">
-                                        Local Delivery: $2.00
-                                        <input type="radio" aria-label="Radio button for following text input">
-                                    </li>
-                                </ul>
-                                <h6>
-                                    Calculate Shipping
-                                    <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                </h6>
-                                <select class="shipping_select">
-                                    <option value="1">Bangladesh</option>
-                                    <option value="2">India</option>
-                                    <option value="4">Pakistan</option>
-                                </select>
-                                <select class="shipping_select section_bg">
-                                    <option value="1">Select a State</option>
-                                    <option value="2">Select a State</option>
-                                    <option value="4">Select a State</option>
-                                </select>
-                                <input class="post_code" type="text" placeholder="Postcode/Zipcode" />
-                                <a class="btn_1" href="#">Update Details</a>
-                            </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <div class="checkout_btn_inner float-right">
-                    <a class="btn_1" href="#">Continue Shopping</a>
-                    <a class="btn_1 checkout_btn_1" href="#">Proceed to checkout</a>
+                        </div>
+                        <!-- Total -->
+                        <div class="cart_item_total">$790.90</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row row_cart_buttons">
+                <div class="col">
+                    <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
+                        <div class="button continue_shopping_button"><a href="#">Continue shopping</a></div>
+                        <div class="cart_buttons_right ml-lg-auto">
+                            <div class="button clear_cart_button"><a href="#">Clear cart</a></div>
+                            <div class="button update_cart_button"><a href="#">Update cart</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row row_extra">
+                <div class="col-lg-4">
+
+                    <!-- Delivery -->
+                    <div class="delivery">
+                        <div class="section_title">Shipping method</div>
+                        <div class="section_subtitle">Select the one you want</div>
+                        <div class="delivery_options">
+                            <label class="delivery_option clearfix">Next day delivery
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                                <span class="delivery_price">$4.99</span>
+                            </label>
+                            <label class="delivery_option clearfix">Standard delivery
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                                <span class="delivery_price">$1.99</span>
+                            </label>
+                            <label class="delivery_option clearfix">Personal pickup
+                                <input type="radio" checked="checked" name="radio">
+                                <span class="checkmark"></span>
+                                <span class="delivery_price">Free</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Coupon Code -->
+                    <div class="coupon">
+                        <div class="section_title">Coupon code</div>
+                        <div class="section_subtitle">Enter your coupon code</div>
+                        <div class="coupon_form_container">
+                            <form action="#" id="coupon_form" class="coupon_form">
+                                <input type="text" class="coupon_input" required="required">
+                                <button class="button coupon_button"><span>Apply</span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 offset-lg-2">
+                    <div class="cart_total">
+                        <div class="section_title">Cart total</div>
+                        <div class="section_subtitle">Final info</div>
+                        <div class="cart_total_container">
+                            <ul>
+                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cart_total_title">Subtotal</div>
+                                    <div class="cart_total_value ml-auto">$790.90</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cart_total_title">Shipping</div>
+                                    <div class="cart_total_value ml-auto">Free</div>
+                                </li>
+                                <li class="d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cart_total_title">Total</div>
+                                    <div class="cart_total_value ml-auto">$790.90</div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="button checkout_button"><a href="#">Proceed to checkout</a></div>
+                    </div>
                 </div>
             </div>
         </div>
-</section>
+    </div>
+
+    @component('components.footer')
+    @endcomponent
+</div>
+
+@extends('components.scripts')
+@section('scripts')
+    @parent
+    <script src="{{ asset('js/cart.js') }}"></script>
+@endsection

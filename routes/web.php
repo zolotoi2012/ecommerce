@@ -12,23 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('about', ['title' => 'About']);
+    return view('index');
 });
 
 Route::get('/cart', function () {
     return view('cart');
 });
 
-Route::get('/category', function () {
-    return view('/category');
+Route::get('/categories', function () {
+    return view('/categories');
 });
 
 Route::get('/checkout', function () {
     return view('checkout');
 });
 
-Route::get('/confirmation', function () {
-    return view('confirmation');
+Route::get('/product', function () {
+    return view('product');
 });
 
 Route::get('/login', function () {
