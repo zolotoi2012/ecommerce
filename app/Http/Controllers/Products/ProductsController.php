@@ -47,18 +47,10 @@ class ProductsController extends Controller
             'desc' => 'required',
             'price' => 'required',
             'count' => 'required',
+            'image' => 'required'
         ]);
 
-        Product::create(
-            [
-                'name' => $request->all()['name'],
-                'desc' => $request->all()['desc'],
-                'price' => $request->all()['price'],
-                'count' => $request->all()['count'],
-                'category_id' => (int) $request->all()['category'],
-                'brand_id' => (int) $request->all()['brand'],
-            ]
-        );
+        $request['image'] = '/images/' . $request['image'];
 
         Product::create($request->all());
 
@@ -85,7 +77,7 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin/products/edit', ['product' => Product::find($product->id)]);
+        return view('admin/products/edit', ['product' => Product::find($product->id), 'categories' => Category::all(), 'brands' => Brand::all()]);
     }
 
     /**
@@ -102,7 +94,10 @@ class ProductsController extends Controller
             'desc' => 'required',
             'price' => 'required',
             'count' => 'required',
+            'image' => 'required'
         ])->validate();
+
+        $request['image'] = '/images/' . $request['image'];
 
         $product->update($request->all());
 

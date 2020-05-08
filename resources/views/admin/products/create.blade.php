@@ -30,8 +30,7 @@
                         </div>
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea class="form-control" name="desc" placeholder="Give good desc :3">
-                            </textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="desc" placeholder="Give good desc :3"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Price</label>
@@ -41,21 +40,24 @@
                             <label>Count</label>
                             <input type="text" name="count" class="form-control" placeholder="10">
                         </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="file" name="image" class="btn btn-bd-download">
+                        </div>
                         <label>Category:
-                            <select class="form-control" id="exampleFormControlSelect1" name="category">
-                                @foreach($categories as $category)
+                            <select name="category_id" class="form-control" id="exampleFormControlSelect1">
+                                @foreach ($categories as $category)
                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </label>
                         <label>Brand:
-                            <select class="form-control" name="brand">
-                                @foreach($brands as $brand)
+                            <select name="brand_id" class="form-control" id="exampleFormControlSelect1">
+                                @foreach ($brands as $brand)
                                     <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                                 @endforeach
                             </select>
                         </label>
-                        <!-- TODO add select of category and brand -->
                         <button type="submit" class="btn btn-warning btn-flat m-b-30 m-t-30">Create</button>
                     </form>
                 </div>

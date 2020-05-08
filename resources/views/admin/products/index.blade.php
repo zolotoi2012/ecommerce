@@ -49,6 +49,7 @@
                                     <th>Rates</th>
                                     <th>Brand</th>
                                     <th>Category</th>
+                                    <th>Image</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Controls</th>
@@ -64,15 +65,16 @@
                                     <td>{{$product->rates ?? 0}}</td>
                                     <td>{{$product->brand['name'] }}</td>
                                     <td>{{$product->category['name'] }}</td>
+                                    <td><img style="width: 50px; height: 50px;" src="{{ $product->image ?? asset('images/product_1.jpg') }}" alt="{{ $product->image }}"></td>
                                     <td>{{$product->created_at}}</td>
                                     <td>{{$product->updated_at}}</td>
                                     <td>
-                                        <a href="{{ route('products.show', $product) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                                        <a href="{{ route('products.edit', $product) }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                        <form action="{{ route('products.destroy', $product) }}" method="post">
+                                        <form action="{{ route('products.destroy', $product) }}" method="POST">
+                                            <a class="btn btn-info" href="{{ route('products.show', $product) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                            <a class="btn btn-primary" href="{{ route('products.edit', $product)}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -83,6 +85,6 @@
                     </div>
                 </div>
             </div>
-        </div><!-- .animated -->
-    </div><!-- .content -->
-</div><!-- /#right-panel -->
+        </div>
+    </div>
+</div>

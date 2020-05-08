@@ -19,8 +19,6 @@ Route::get('/cart', function () {
 
 Route::get('/categories', 'CategoriesController@index');
 
-Route::get('/categories/{$id}', 'Admin/CategoriesController@show');
-
 Route::get('/checkout', function () {
     return view('checkout', ['categories' => \App\Category::all()]);
 });
