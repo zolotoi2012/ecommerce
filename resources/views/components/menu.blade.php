@@ -19,13 +19,11 @@
                                         </ul>
                                     </li>
                                     <li class="hassubs">
-                                        <a href="/categories">Categories</a>
+                                        <a href="#">Categories</a>
                                         <ul>
-                                            <li><a href="/categories">Category</a></li>
-                                            <li><a href="/categories">Category</a></li>
-                                            <li><a href="/categories">Category</a></li>
-                                            <li><a href="/categories">Category</a></li>
-                                            <li><a href="/categories">Category</a></li>
+                                            @foreach ($categories as $category)
+                                                <li><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
+                                            @endforeach
                                         </ul>
                                     </li>
                                     <li><a href="#">Accessories</a></li>

@@ -9,7 +9,7 @@
 
 <div class="super_container">
 
-    @component('components.menu')
+    @component('components.menu', ['categories' => $categories])
     @endcomponent
 
     <div class="home">

@@ -6,7 +6,7 @@
 @yield('styles')
 
 <div class="super_container">
-    @component('components.menu')
+    @component('components.menu', ['categories' => $categories])
     @endcomponent
 
     <!-- Home -->

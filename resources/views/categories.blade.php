@@ -9,7 +9,7 @@
 @yield('styles')
 
 <div class="super_container">
-    @component('components.menu')
+    @component('components.menu', ['categories' => $categories])
     @endcomponent
 
     <div class="home">
@@ -35,7 +35,6 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-
                     <!-- Product Sorting -->
                     <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
                         <div class="results">Showing <span>12</span> results</div>
@@ -65,7 +64,7 @@
                         <!-- Product -->
                         <div class="product">
                             <div class="product_image"><img src="images/product_1.jpg" alt=""></div>
-                            <div class="product_extra product_new"><a href="categories.html">New</a></div>
+                            <div class="product_extra product_new"><a href="/categories">New</a></div>
                             <div class="product_content">
                                 <div class="product_title"><a href="product.html">Smart Phone</a></div>
                                 <div class="product_price">$670</div>

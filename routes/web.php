@@ -11,32 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'HomeController@index');
 
 Route::get('/cart', function () {
-    return view('cart');
+    return view('cart', ['categories' => \App\Category::all()]);
 });
 
-Route::get('/categories', function () {
-    return view('/categories');
-});
+Route::get('/categories', 'CategoriesController@index');
+
+Route::get('/categories/{$id}', 'Admin/CategoriesController@show');
 
 Route::get('/checkout', function () {
-    return view('checkout');
+    return view('checkout', ['categories' => \App\Category::all()]);
 });
 
 Route::get('/product', function () {
-    return view('product');
-});
-
-Route::get('/login', function () {
-    return view('login');
+    return view('product', ['categories' => \App\Category::all()]);
 });
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('contact', ['categories' => \App\Category::all()]);
 });
 
 Route::get('/simple_product', function () {
