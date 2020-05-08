@@ -18,6 +18,7 @@ Route::get('/cart', function () {
 });
 
 Route::get('/categories', 'CategoriesController@index');
+Route::get('/categories/show/{category}', 'CategoriesController@show')->name('category');
 
 Route::get('/checkout', function () {
     return view('checkout', ['categories' => \App\Category::all()]);
@@ -55,3 +56,5 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/product/{product}', 'ProductsController@show')->name('product');

@@ -12,4 +12,12 @@ class CategoriesController extends Controller
     {
         return view('categories', ['categories' => Category::all(), 'products' => Product::all()]);
     }
+
+    public function show(Category $category)
+    {
+        $category = Category::find($category->id);
+        $categories = Category::all();
+
+        return view('categories', compact('category', 'categories'));
+    }
 }

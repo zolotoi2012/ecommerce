@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                            <div class="logo"><a href="#">SmartShop</a></div>
+                            <div class="logo"><a href="/">SmartShop</a></div>
                             <nav class="main_nav">
                                 <ul>
                                     <li class="hassubs active">
@@ -22,7 +22,7 @@
                                         <a href="#">Categories</a>
                                         <ul>
                                             @foreach ($categories as $category)
-                                                <li><a href="{{ route('categories.show', $category) }}">{{ $category->name }}</a></li>
+                                                <li><a href="{{ route('category', $category) }}">{{ $category->name }}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
