@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Products;
 use App\Brand;
 use App\Category;
 use App\Product;
+use Encore\Admin\Actions\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
@@ -105,13 +106,7 @@ class ProductsController extends Controller
             ->with('success','Product updated successfully');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Product $product
-     * @return void
-     * @throws \Exception
-     */
+
     public function destroy(Product $product)
     {
         $product->delete();

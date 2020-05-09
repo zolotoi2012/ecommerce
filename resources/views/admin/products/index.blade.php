@@ -69,7 +69,7 @@
                                     <td>{{$product->created_at}}</td>
                                     <td>{{$product->updated_at}}</td>
                                     <td>
-                                        <form action="{{ route('products.destroy', $product) }}" method="POST">
+                                        <form id="trash-form" action="{{ route('products.destroy', $product) }}" method="POST">
                                             <a class="btn btn-info" href="{{ route('products.show', $product) }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a class="btn btn-primary" href="{{ route('products.edit', $product)}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                             @csrf

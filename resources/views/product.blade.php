@@ -1,6 +1,7 @@
 @include('components.header')
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/product.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/product_responsive.css') }}">
+<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
 <body>
     <div class="super_container">
         @component('components.menu', ['categories' => $categories])
@@ -25,25 +26,28 @@
             </div>
         </div>
 
-        <!-- Product Details -->
-
         <div class="product_details">
             <div class="container">
                 <div class="row details_row">
-
-                    <!-- Product Image -->
                     <div class="col-lg-6">
-                        <div class="details_image">
-                            <div class="details_image_large"><img src="{{ asset('images/details_1.jpg') }}" alt=""><div class="product_extra product_new"><a href="/categories">{{ $product->category['name'] ?? 'New'}}</a></div></div>
-                            <div class="details_image_thumbnails d-flex flex-row align-items-start justify-content-between">
-                                <div class="details_image_thumbnail active" data-image="{{ asset('images/details_1.jpg') }}"><img src="{{ asset('images/details_1.jpg') }}" alt=""></div>
-                                <div class="details_image_thumbnail" data-image="{{ asset('images/details_2.jpg') }}"><img src="{{ asset('images/details_2.jpg') }}" alt=""></div>
-                                <div class="details_image_thumbnail" data-image="{{ asset('images/details_3.jpg') }}"><img src="{{ asset('images/details_3.jpg') }}" alt=""></div>
-                                <div class="details_image_thumbnail" data-image="{{ asset('images/details_4.jpg') }}"><img src="{{ asset('images/details_4.jpg') }}" alt=""></div>
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="details_image_large imgBx"><img src="{{ $product->image ?? asset('images/details_1.jpg') }}" alt=""><div class="product_extra product_new"><a href="#">{{ $product->category['name'] ?? 'New'}}</a></div></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="details_image_large imgBx" data-image="{{ asset('images/details_2.jpg') }}"><img src="{{ asset('images/details_2.jpg') }}" alt=""></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="details_image_large imgBx" data-image="{{ asset('images/details_3.jpg') }}"><img src="{{ asset('images/details_3.jpg') }}" alt=""></div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="details_image_large imgBx" data-image="{{ asset('images/details_4.jpg') }}"><img src="{{ asset('images/details_4.jpg') }}" alt=""></div>
+                                </div>
                             </div>
+                            <div class="swiper-pagination"></div>
                         </div>
                     </div>
-
                     <!-- Product Content -->
                     <div class="col-lg-6">
                         <div class="details_content">
@@ -167,5 +171,21 @@
 
         @include('components.scripts')
         <script src="{{ asset('js/product.js') }}"></script>
+        <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+            <script>
+                var swiper = new Swiper('.swiper-container', {
+                    effect: 'cube',
+                    grabCursor: true,
+                    cubeEffect: {
+                        shadow: true,
+                        slideShadows: true,
+                        shadowOffset: 20,
+                        shadowScale: 0.94,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                });
+            </script>
     </div>
 </body>

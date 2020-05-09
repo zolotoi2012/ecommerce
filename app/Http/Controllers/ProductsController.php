@@ -18,6 +18,8 @@ class ProductsController extends Controller
 
     public function show(Product $product)
     {
+        $product->update(['views' => $product->views + 1]);
+
         return view(
             'product',
             [
