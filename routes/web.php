@@ -12,6 +12,12 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/register-user', function () {
+   return view('register');
+});
+Route::get('/login-user', function () {
+   return view('login');
+});
 
 Route::get('/cart', function () {
     return view('cart', ['categories' => \App\Category::all()]);

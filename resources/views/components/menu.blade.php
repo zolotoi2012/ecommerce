@@ -94,6 +94,7 @@
         <!-- Social -->
         <div class="header_social">
             <ul>
+                <a href="/login-user" style="text-decoration: none; font-size: 16px; color: #767676; padding-right: 15px;"><i class="fa fa-sign-in"></i> Login</a>
                 <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
                 <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
