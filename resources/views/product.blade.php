@@ -30,38 +30,43 @@
             <div class="container">
                 <div class="row details_row">
                     <div class="col-lg-6">
-                        <div class="swiper-container">
+                        <div class="swiper-container" style="width: 450px; height: 450px;">
                             <div class="swiper-wrapper">
+                                @foreach ($product->images as $image)
                                 <div class="swiper-slide">
-                                    <div class="details_image_large imgBx"><img src="{{ $product->image ?? asset('images/details_1.jpg') }}" alt=""><div class="product_extra product_new"><a href="#">{{ $product->category['name'] ?? 'New'}}</a></div></div>
+                                    <div class="details_image_large imgBx">
+                                        <img style="width: 450px; height: 450px;" src="{{ $image->name ?? asset('images/details_1.jpg') }}" alt="">
+                                        <div class="product_extra product_new">
+                                            <a href="#">{{ $product->category['name'] ?? 'New'}}</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="swiper-slide">
-                                    <div class="details_image_large imgBx" data-image="{{ asset('images/details_2.jpg') }}"><img src="{{ asset('images/details_2.jpg') }}" alt=""></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="details_image_large imgBx" data-image="{{ asset('images/details_3.jpg') }}"><img src="{{ asset('images/details_3.jpg') }}" alt=""></div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="details_image_large imgBx" data-image="{{ asset('images/details_4.jpg') }}"><img src="{{ asset('images/details_4.jpg') }}" alt=""></div>
-                                </div>
+                                @endforeach
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
                     </div>
+
                     <!-- Product Content -->
                     <div class="col-lg-6">
                         <div class="details_content">
-                            <div class="details_name">Smart Phone</div>
+                            <div class="details_name">{{ $product->name }}</div>
                             <div class="details_discount">$890</div>
-                            <div class="details_price">$670</div>
+                            <div class="details_price">{{ $product->price }}$</div>
 
                             <!-- In Stock -->
                             <div class="in_stock_container">
                                 <div class="availability">Availability:</div>
-                                <span>In Stock</span>
+                                <span>
+                                    @if ($product->count > 0)
+                                    In Stock
+                                    @else
+                                        <span style="color: red;">Out of Stock</span>
+                                    @endif
+                                </span>
                             </div>
                             <div class="details_text">
-                                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+                                <p>{{ $product->desc }}</p>
                             </div>
 
                             <!-- Product Quantity -->
@@ -98,7 +103,7 @@
                             <div class="reviews_title"><a href="#">Reviews <span>(1)</span></a></div>
                         </div>
                         <div class="description_text">
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Phasellus id nisi quis justo tempus mollis sed et dui. In hac habitasse platea dictumst. Suspendisse ultrices mauris diam. Nullam sed aliquet elit. Mauris consequat nisi ut mauris efficitur lacinia.</p>
+                            <p>{{ $product->desc }}</p>
                         </div>
                     </div>
                 </div>

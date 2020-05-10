@@ -1,12 +1,8 @@
-@component('admin.components.header')
-@endcomponent
-@component('admin.components.left_panel')
-@endcomponent
-@extends('admin.components.scripts')
-
+@include('admin.components.header')
+@include('admin.components.left_panel')
+@include('admin.components.scripts')
 <div id="right-panel" class="right-panel">
-    @component('admin.components.menu')
-    @endcomponent
+    @include('admin.components.menu')
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
@@ -22,17 +18,23 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Count</th>
-                                    <th>Controls</th>
+                                    <th>Image</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
                                         <td>{{ $brand->id }}</td>
                                         <td>{{ $brand->name }}</td>
-                                        <td>{{ $count }}</td>
+                                        <td>{{ count($brand->products) }}</td>
+                                        <td><img class="image-size" src="{{ $brand->image ?? asset('/images/product_1.jpg') }}" alt="{{ $brand->name }}"></td>
                                         <td>
-                                            <a href="{{ route('brands.update', $brand) }}"><i class="fa fa-edit" aria-hidden="true"></i></a>
-                                            <a href="{{ route('brands.destroy', $brand) }}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <form action="{{ route('brands.destroy', $brand) }}" method="POST">
+                                                <a class="btn btn-primary" href="{{ route('brands.edit', $brand)}}"><i class="fa fa-edit" aria-hidden="true"></i></a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Products;
+namespace App\Http\Controllers\Admin;
 
 use App\Brand;
 use App\Category;
+use App\Image;
 use App\Product;
 use Encore\Admin\Actions\Response;
 use Illuminate\Http\Request;
@@ -48,12 +49,25 @@ class ProductsController extends Controller
             'desc' => 'required',
             'price' => 'required',
             'count' => 'required',
-            'image' => 'required'
+            'images' => 'required'
         ]);
 
-        $request['image'] = '/images/' . $request['image'];
+        $product = new Product();
+        $product->name = $request['name'];
+        $product->price = $request['price'];
+        $product->count = $request['count'];
+        $product->desc = $request['desc'];
+        $product->brand_id = $request['brand_id'];
+        $product->category_id = $request['category_id'];
 
-        Product::create($request->all());
+        $product->save();
+
+        foreach ($request['images'] as $image) {
+            $images = new Image();
+            $images->name = '/images/' . $image->getClientOriginalName();
+            $images->product_id = $product->id;
+            $images->save();
+        }
 
         return redirect()->route('products.index')
             ->with('success','Product created successfully.');
@@ -97,8 +111,6 @@ class ProductsController extends Controller
             'count' => 'required',
             'image' => 'required'
         ])->validate();
-
-        $request['image'] = '/images/' . $request['image'];
 
         $product->update($request->all());
 

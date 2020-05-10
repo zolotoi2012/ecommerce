@@ -1,20 +1,16 @@
-@component('admin.components.header')
-@endcomponent
+@include('admin.components.header')
 @component('admin.components.left_panel')
 @endcomponent
 @extends('admin.components.scripts')
-
 <div id="right-panel" class="right-panel">
-    @component('admin.components.menu')
-    @endcomponent
-
+    @include('admin.components.menu')
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Data Table</strong>
+                            <strong class="card-title">Product: {{ $product->name }}</strong>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -31,7 +27,7 @@
                                     <th>Created At</th>
                                     <th>Updated At</th>
                                     <th>Description</th>
-                                    <th>Controls</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,7 +39,11 @@
                                         <td>{{$product->rates ?? 0}}</td>
                                         <td>{{$product->brand['name']}}</td>
                                         <td>{{$product->category['name']}}</td>
-                                        <td><img style="width: 50px; height: 50px;" src="{{$product->image}}"></td>
+                                        <td>
+                                            @foreach($product->images as $image)
+                                                <img class="image-size" src="{{ $image->name ?? asset('images/product_1.jpg') }}" alt="{{ $product->image }}">
+                                            @endforeach
+                                        </td>
                                         <td>{{$product->created_at}}</td>
                                         <td>{{$product->updated_at}}</td>
                                         <td>{{$product->desc}}</td>
@@ -62,6 +62,6 @@
                     </div>
                 </div>
             </div>
-        </div><!-- .animated -->
-    </div><!-- .content -->
+        </div>
+    </div>
 </div>

@@ -1,13 +1,8 @@
-@component('admin.components.header')
-@endcomponent
-@component('admin.components.left_panel')
-@endcomponent
-@extends('admin.components.scripts')
-
+@include('admin.components.header')
+@include('admin.components.left_panel')
+@include('admin.components.scripts')
 <div id="right-panel" class="right-panel">
-    @component('admin.components.menu')
-    @endcomponent
-
+    @include('admin.components.menu')
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">

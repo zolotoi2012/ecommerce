@@ -55,9 +55,10 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
        return view('admin/index');
     });
 
-    Route::resource('products', 'Products\ProductsController');
-    Route::resource('categories', 'Categories\CategoriesController');
-    Route::resource('brands', 'Brands\BrandsController');
+    Route::resource('products', 'Admin\ProductsController');
+    Route::resource('categories', 'Admin\CategoriesController');
+    Route::resource('brands', 'Admin\BrandsController');
+    Route::resource('images', 'Admin\ImagesController');
 });
 Auth::routes();
 

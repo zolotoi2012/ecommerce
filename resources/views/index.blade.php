@@ -17,7 +17,7 @@
                         <div class="product_grid">
                             @foreach ($products as $product)
                                 <div class="product">
-                                    <div class="product_image"><img style="width: 250px; height: 250px;" src="{{ $product->image ?? 'images/product_1.jpg'}}" alt=""></div>
+                                    <div class="product_image"><img style="width: 250px; height: 250px;" src="{{ $product->images->first()->name ?? 'images/product_1.jpg'}}" alt=""></div>
                                     <div class="product_extra product_new"><a href="#">{{ $product->category['name'] ?? 'New'}}</a></div>
                                     <div class="product_content">
                                         <div class="product_title"><a href="{{ route('product', $product) }}">{{ $product->name }}</a></div>

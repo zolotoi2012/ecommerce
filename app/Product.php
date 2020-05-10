@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     protected $fillable = [
-        'name', 'price', 'count', 'desc', 'views', 'rates', 'brand_id', 'category_id', 'image'
+        'name', 'price', 'count', 'desc', 'views', 'rates', 'brand_id', 'category_id',
     ];
 
     public function category()
@@ -18,5 +18,10 @@ class Product extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany('App\Image', 'product_id');
     }
 }

@@ -1,42 +1,18 @@
-@component('admin.components.header')
-@endcomponent
-@component('admin.components.left_panel')
-@endcomponent
-@extends('admin.components.scripts')
-
+@include('admin.components.header')
+@include('admin.components.left_panel')
+@include('admin.components.scripts')
 <!-- Right Panel -->
 <div id="right-panel" class="right-panel">
-    @component('admin.components.menu')
-    @endcomponent
-
-    <div class="breadcrumbs">
-        <div class="col-sm-4">
-            <div class="page-header float-left">
-                <div class="page-title">
-                    <h1>Dashboard</h1>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-8">
-            <div class="page-header float-right">
-                <div class="page-title">
-                    <ol class="breadcrumb text-right">
-                        <li><a href="/admin">Dashboard</a></li>
-                        <li class="active">Products</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @include('admin.components.menu')
+    @include('admin.components.breadcrumbs', ['title' => 'Products'])
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
-                <a href="{{ route('products.create') }}" class="btn btn-success" style="margin-bottom: 5px; margin-left: 15px;"><i class="fa fa-plus-square"></i> Create product</a>
+                <a href="{{ route('products.create') }}" class="btn btn-success create-button"><i class="fa fa-plus-square"></i> Create product</a>
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Data Table</strong>
+                            <strong class="card-title">Products Table</strong>
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
@@ -52,7 +28,7 @@
                                     <th>Image</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
-                                    <th>Controls</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -65,7 +41,11 @@
                                     <td>{{$product->rates ?? 0}}</td>
                                     <td>{{$product->brand['name'] }}</td>
                                     <td>{{$product->category['name'] }}</td>
-                                    <td><img style="width: 50px; height: 50px;" src="{{ $product->image ?? asset('images/product_1.jpg') }}" alt="{{ $product->image }}"></td>
+                                    <td>
+                                        @foreach($product->images as $image)
+                                            <img style="width: 50px; height: 50px;" src="{{ $image->name ?? asset('images/product_1.jpg') }}" alt="{{ $product->image }}">
+                                        @endforeach
+                                    </td>
                                     <td>{{$product->created_at}}</td>
                                     <td>{{$product->updated_at}}</td>
                                     <td>

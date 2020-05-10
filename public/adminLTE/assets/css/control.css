@@ -1,0 +1,39 @@
+input[type="file"]
+{
+    display: none;
+}
+.image-label
+{
+    color: white;
+    height: 60px;
+    width: 250px;
+    background-color: #f5af09;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+}
+.image-text
+{
+    color: #fff;
+    cursor: pointer;
+}
+.image-size
+{
+    width: 75px;
+    height: 75px;
+}
+.image-padding
+{
+    padding-left: 120px;
+}
+.select-padding
+{
+    padding-left: 145px;
+}
+.create-button
+{
+    margin-bottom: 5px;
+    margin-left: 15px;
+}

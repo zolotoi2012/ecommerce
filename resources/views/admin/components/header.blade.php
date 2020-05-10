@@ -21,12 +21,10 @@
     <link rel="stylesheet" href="{{ asset('adminLTE/vendors/selectFX/css/cs-skin-elastic.css') }}">
     <link rel="stylesheet" href="{{ asset('adminLTE/vendors/jqvmap/dist/jqvmap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('adminLTE/assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminLTE/assets/css/custom.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ asset('adminLTE/assets/css/control.css') }}">
 </head>
 <body>
-
-
 @endsection
 
 @yield('header')

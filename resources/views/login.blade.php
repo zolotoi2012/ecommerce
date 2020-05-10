@@ -1,5 +1,6 @@
 @include('components.header')
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/login_styles.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
 <body>
     <form action="{{ route('login') }}" class="login-form" method="POST">
         @csrf
