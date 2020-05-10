@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Brand;
 use App\Category;
 use App\Product;
+use App\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -18,7 +20,10 @@ class ProductsController extends Controller
 
     public function show(Product $product)
     {
-        $product->update(['views' => $product->views + 1]);
+        $view = new View();
+        $view->product_id = $product->id;
+        $view->user_id = Auth::user()->id;
+        $view->save();
 
         return view(
             'product',

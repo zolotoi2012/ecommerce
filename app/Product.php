@@ -29,4 +29,9 @@ class Product extends Model
     {
         return $this->hasMany('App\Solds', 'product_id');
     }
+
+    public function views()
+    {
+        return $this->hasMany('App\View', 'product_id');
+    }
 }
