@@ -59,6 +59,7 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::resource('categories', 'Admin\CategoriesController');
     Route::resource('brands', 'Admin\BrandsController');
     Route::resource('images', 'Admin\ImagesController');
+    Route::get('solds', 'Admin\SoldsController@index');
 });
 Auth::routes();
 

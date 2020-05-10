@@ -1,6 +1,6 @@
 @include('admin.components.header')
 @include('admin.components.left_panel')
-@include('admin.components.scripts')
+@extends('admin.components.scripts')
 <div id="right-panel" class="right-panel">
     @include('admin.components.menu')
     @include('admin.components.breadcrumbs', ['title' => 'Categories'])

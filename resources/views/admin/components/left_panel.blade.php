@@ -15,26 +15,22 @@
                     <li class="active">
                         <a href="/admin/"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Tables</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="{{ route('products.index') }}">Products</a></li>
-                            <li><i class="fa fa-table"></i><a href="{{ route('categories.index') }}">Categories</a></li>
-                            <li><i class="fa fa-table"></i><a href="{{ route('brands.index') }}">Brands</a></li>
-                        </ul>
+                    <li class="active">
+                        <a href="{{ route('products.index') }}"><i class="menu-icon fa fa-table"></i>Products</a>
                     </li>
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Forms</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-basic.html">Basic Form</a></li>
-                            <li><i class="menu-icon fa fa-th"></i><a href="forms-advanced.html">Advanced Form</a></li>
-                        </ul>
+                    <li class="active">
+                        <a href="{{ route('categories.index') }}"><i class="menu-icon fa fa-table"></i> Categories</a>
+                    </li>
+                    <li class="active">
+                        <a href="{{ route('brands.index') }}"><i class="menu-icon fa fa-table"></i>Brands</a>
+                    </li>
+                    <li class="active">
+                        <a href="/admin/solds"><i class="menu-icon fa fa-table"></i>Solds</a>
                     </li>
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
         </nav>
-    </aside><!-- /#left-panel -->
-    <!-- Left Panel -->
+    </aside>
 @endsection
 
 @yield('left_panel')

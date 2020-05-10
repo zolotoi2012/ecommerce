@@ -1,7 +1,6 @@
 @include('admin.components.header')
 @include('admin.components.left_panel')
-@include('admin.components.scripts')
-<!-- Right Panel -->
+@extends('admin.components.scripts')
 <div id="right-panel" class="right-panel">
     @include('admin.components.menu')
     @include('admin.components.breadcrumbs', ['title' => 'Products'])
@@ -35,7 +34,7 @@
                                 @foreach($products as $product)
                                 <tr>
                                     <td>{{$product->name}}</td>
-                                    <td>{{$product->price}}$</td>
+                                    <td>${{$product->price}}</td>
                                     <td>{{$product->count}}</td>
                                     <td>{{$product->views ?? 0}}</td>
                                     <td>{{$product->rates ?? 0}}</td>
