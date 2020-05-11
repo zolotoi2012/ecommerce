@@ -9,7 +9,6 @@ use App\Product;
 use Encore\Admin\Actions\Response;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
 class ProductsController extends Controller
@@ -21,9 +20,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $categories = Category::all();
-        return view('admin/products/index', compact('products', 'categories'));
+        return view('admin/products/index', ['products' => Product::all()]);
     }
 
     /**
@@ -64,7 +61,7 @@ class ProductsController extends Controller
 
         foreach ($request['images'] as $image) {
             $images = new Image();
-            $images->name = '/images/' . $image->getClientOriginalName();
+            $images->name = '/images/products/' . $image->getClientOriginalName();
             $images->product_id = $product->id;
             $images->save();
         }
@@ -108,11 +105,23 @@ class ProductsController extends Controller
             'name' => 'required|max:255',
             'desc' => 'required',
             'price' => 'required',
-            'count' => 'required',
-            'image' => 'required'
+            'count' => 'required'
         ])->validate();
 
         $product->update($request->all());
+
+        if ($request['images'][0] != '') {
+            foreach ($request['images'] as $name) {
+                Image::where('product_id', '=', $product->id)
+                    ->where('created_at', '<', date('Y-m-d H:i:s'))
+                    ->delete();
+
+                $image = new Image();
+                $image->name = '/images/products/' . $name;
+                $image->product_id = $product->id;
+                $image->save();
+            }
+        }
 
         return redirect()->route('products.index')
             ->with('success','Product updated successfully');

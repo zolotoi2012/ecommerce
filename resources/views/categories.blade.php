@@ -5,7 +5,6 @@
     <div class="super_container">
         @component('components.menu', ['categories' => $categories])
         @endcomponent
-
         <div class="home">
             <div class="home_container">
                 <div class="home_background" style="background-image:url({{ asset('images/categories.jpg') }})"></div>
@@ -23,7 +22,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Products -->
         <div class="products">
             <div class="container">
@@ -56,10 +54,9 @@
                             @foreach($category->products as $product)
                             <div class="product">
                                 <div class="product_image"><img style="width: 250px; height: 250px;" src="{{ $product->images->first()->name ?? asset('/images/product_1.jpg')}}" alt=""></div>
-                                <div class="product_extra product_new"><a href="#">{{ $category->name }}</a></div>
-                                <div class="product_content">
+                                <div class="product_content" style="text-align: center;">
                                     <div class="product_title"><a href="{{ route('product', $product) }}">{{ $product->name }}</a></div>
-                                    <div class="product_price">{{ $product->price }}</div>
+                                    <div class="product_price">${{ $product->price }}</div>
                                 </div>
                             </div>
                             @endforeach

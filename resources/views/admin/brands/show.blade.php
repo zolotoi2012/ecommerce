@@ -18,7 +18,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Count</th>
-                                    <th>Image</th>
+                                    <th>Logo</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -27,7 +27,7 @@
                                         <td>{{ $brand->id }}</td>
                                         <td>{{ $brand->name }}</td>
                                         <td>{{ count($brand->products) }}</td>
-                                        <td><img class="image-size" src="{{ $brand->image ?? asset('/images/product_1.jpg') }}" alt="{{ $brand->name }}"></td>
+                                        <td><img class="image-size" src="{{ $brand->logo ?? asset('/images/product_1.jpg') }}" alt="{{ $brand->name }}"></td>
                                         <td>
                                             <form action="{{ route('brands.destroy', $brand) }}" method="POST">
                                                 <a class="btn btn-primary" href="{{ route('brands.edit', $brand)}}"><i class="fa fa-edit" aria-hidden="true"></i></a>

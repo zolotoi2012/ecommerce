@@ -51,19 +51,18 @@
                 <div class="col-lg-6">
                     <div class="details_content">
                         <div class="details_name">{{ $product->name }}</div>
-                        <div class="details_discount">$890</div>
                         <div class="details_price">{{ $product->price }}$</div>
 
                         <!-- In Stock -->
                         <div class="in_stock_container">
                             <div class="availability">Availability:</div>
                             <span>
-                                    @if ($product->count > 0)
+                                @if ($product->count > 0)
                                     In Stock
                                 @else
                                     <span style="color: red;">Out of Stock</span>
                                 @endif
-                                </span>
+                            </span>
                         </div>
                         <div class="details_text">
                             <p>{{ $product->desc }}</p>

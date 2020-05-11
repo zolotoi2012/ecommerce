@@ -16,7 +16,7 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="#">Accessories</a></li>
+                                    <li><a href="/brands">Brands</a></li>
                                     <li><a href="#">Offers</a></li>
                                     <li><a href="/contact">Contact</a></li>
                                     <li><a href="/login-user">Login</a></li>

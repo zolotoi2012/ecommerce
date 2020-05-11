@@ -48,14 +48,22 @@
                             <label>Category:
                                 <select name="category_id" class="form-control" id="exampleFormControlSelect1">
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @if ($category->name === $product->category->name)
+                                            <option selected value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @else
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </label>
                             <label>Brand:
                                 <select name="brand_id" class="form-control" id="exampleFormControlSelect1">
                                     @foreach ($brands as $brand)
-                                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @if ($brand->name === $product->brand->name)
+                                            <option selected value="{{ $category->id }}">{{ $brand->name }}</option>
+                                        @else
+                                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </label>

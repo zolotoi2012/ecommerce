@@ -19,7 +19,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>Image</th>
+                                    <th>Logo</th>
                                     <th>Count of Products</th>
                                     <th>Actions</th>
                                 </tr>
@@ -29,7 +29,7 @@
                                 <tr>
                                     <td>{{ $brand->id }}</td>
                                     <td>{{ $brand->name }}</td>
-                                    <td><img class="image-size" src="{{ $brand->image ?? asset('/images/product_1.jpg') }}" alt="{{ $brand->name }}"></td>
+                                    <td><img class="image-size" src="{{ $brand->logo ?? asset('/images/product_1.jpg') }}" alt="{{ $brand->name }}"></td>
                                     <td>{{ count($brand->products) }}</td>
                                     <td>
                                         <form id="trash-form" action="{{ route('brands.destroy', $brand) }}" method="POST">

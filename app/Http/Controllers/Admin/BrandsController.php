@@ -40,11 +40,15 @@ class BrandsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:255'
+            'name' => 'required|max:255',
+            'logo' => 'required',
         ]);
 
-        // TODO add image to Brands
-        Brand::create(['name' => $request->input('name')]);
+        $brand = new Brand();
+        $brand->name = $request['name'];
+        $brand->logo = '/images/brands/' . $request['logo'];
+
+        $brand->save();
 
         return redirect()->route('brands.index')
             ->with('success','Brand added successfully.');
@@ -59,9 +63,8 @@ class BrandsController extends Controller
     public function show(Brand $brand)
     {
         $brand = Brand::find($brand->id);
-        $count = count($brand->products);
 
-        return view('admin/brands/show', compact('brand', 'count'));
+        return view('admin/brands/show', compact('brand'));
     }
 
     /**
@@ -88,9 +91,10 @@ class BrandsController extends Controller
     {
         Validator::make($request->all(), [
             'name' => 'required|max:255',
+            'logo' => 'required',
         ])->validate();
 
-        $brand->update($request->all());
+        $brand->update(['name' => $request['name'], 'logo' => '/images/brands/' . $request['logo']]);
 
         return redirect()->route('brands.index')
             ->with('success','Brand updated successfully');

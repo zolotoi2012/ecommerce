@@ -23,6 +23,10 @@
                             <label>Name</label>
                             <input type="text" name="name" class="form-control" placeholder="New">
                         </div>
+                        <div class="form-group image-padding edit-image">
+                            <label for="file" class="image-label"><i class="fa fa-photo" style="color: #fff;"></i> &nbsp <span class="image-text">Add Logo</span></label>
+                            <input id="file" name="logo" type="file" accept="image/*">
+                        </div>
                         <button type="submit" class="btn btn-warning btn-flat m-b-30 m-t-30">Create</button>
                     </form>
                 </div>
