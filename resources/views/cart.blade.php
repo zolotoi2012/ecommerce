@@ -118,7 +118,7 @@
                                     </li>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Total</div>
-                                        <div class="cart_total_value ml-auto">${{ $cart->first()->total() }}</div>
+                                        <div class="cart_total_value ml-auto">${{ $cart->first() ? $cart->first()->total() : 0}}</div>
                                     </li>
                                 </ul>
                             </div>
