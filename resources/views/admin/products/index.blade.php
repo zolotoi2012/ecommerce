@@ -36,7 +36,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>${{$product->price}}</td>
                                     <td>{{$product->count}}</td>
-                                    <td>{{$product->views ?? 0}}</td>
+                                    <td>{{ count($product->views) ?? 0}}</td>
                                     <td>{{$product->rates ?? 0}}</td>
                                     <td>{{$product->brand['name'] }}</td>
                                     <td>{{$product->category['name'] }}</td>

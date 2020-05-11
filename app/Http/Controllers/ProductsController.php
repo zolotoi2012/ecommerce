@@ -22,7 +22,7 @@ class ProductsController extends Controller
     {
         $view = new View();
         $view->product_id = $product->id;
-        $view->user_id = Auth::user()->id;
+        $view->user_id = Auth::user()->id ?? 1;
         $view->save();
 
         return view(

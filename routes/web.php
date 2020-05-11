@@ -19,8 +19,10 @@ Route::get('/login-user', function () {
    return view('login');
 });
 
-Route::get('/cart', function () {
-    return view('cart', ['categories' => \App\Category::all()]);
+Route::prefix('/cart')->group(function () {
+    Route::get('/', 'CartController@show');
+    Route::get('/clear', 'CartController@clear')->name('clear');
+    Route::post('add-to-cart/{product}', 'CartController@addToCart')->name('addToCart');
 });
 
 Route::get('/categories', 'CategoriesController@index');

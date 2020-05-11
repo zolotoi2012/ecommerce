@@ -10,7 +10,6 @@
                                 <div class="breadcrumbs">
                                     <ul>
                                         <li><a href="/">Home</a></li>
-                                        <li><a href="/categories">Categories</a></li>
                                         <li>Shopping Cart</li>
                                     </ul>
                                 </div>

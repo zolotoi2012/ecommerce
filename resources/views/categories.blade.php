@@ -31,7 +31,7 @@
                     <div class="col">
                         <!-- Product Sorting -->
                         <div class="sorting_bar d-flex flex-md-row flex-column align-items-md-center justify-content-md-start">
-                            <div class="results">Showing <span>12</span> results</div>
+                            <div class="results">Showing <span>{{ count($category->products) }}</span> results</div>
                             <div class="sorting_container ml-md-auto">
                                 <div class="sorting">
                                     <ul class="item_sorting">
@@ -55,7 +55,7 @@
                         <div class="product_grid">
                             @foreach($category->products as $product)
                             <div class="product">
-                                <div class="product_image"><img style="width: 250px; height: 250px;" src="{{ $product->image ?? asset('/images/product_1.jpg')}}" alt=""></div>
+                                <div class="product_image"><img style="width: 250px; height: 250px;" src="{{ $product->images->first()->name ?? asset('/images/product_1.jpg')}}" alt=""></div>
                                 <div class="product_extra product_new"><a href="#">{{ $category->name }}</a></div>
                                 <div class="product_content">
                                     <div class="product_title"><a href="{{ route('product', $product) }}">{{ $product->name }}</a></div>

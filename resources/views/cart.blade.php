@@ -24,47 +24,45 @@
                 </div>
                 <div class="row cart_items_row">
                     <div class="col">
-
                         <!-- Cart Item -->
-                        <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
-                            <!-- Name -->
-                            <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
-                                <div class="cart_item_image">
-                                    <div><img src="images/cart_1.jpg" alt=""></div>
+                        @foreach($cart as $item)
+                            <div class="cart_item d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start">
+                                <!-- Name -->
+                                <div class="cart_item_product d-flex flex-row align-items-center justify-content-start">
+                                    <div class="cart_item_image">
+                                        <div><img src="{{ $item->options->image ?? asset('/images/product_1.jpg') }}" alt=""></div>
+                                    </div>
+                                    <div class="cart_item_name_container">
+                                        <div class="cart_item_name"><a href="#">{{ $item->name }}</a></div>
+                                    </div>
                                 </div>
-                                <div class="cart_item_name_container">
-                                    <div class="cart_item_name"><a href="#">Smart Phone Deluxe Edition</a></div>
-                                    <div class="cart_item_edit"><a href="#">Edit Product</a></div>
-                                </div>
-                            </div>
-                            <!-- Price -->
-                            <div class="cart_item_price">$790.90</div>
-                            <!-- Quantity -->
-                            <div class="cart_item_quantity">
-                                <div class="product_quantity_container">
-                                    <div class="product_quantity clearfix">
-                                        <span>Qty</span>
-                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-                                        <div class="quantity_buttons">
-                                            <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
-                                            <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                                <!-- Price -->
+                                <div class="cart_item_price">${{ $item->price }}</div>
+                                <!-- Quantity -->
+                                <div class="cart_item_quantity">
+                                    <div class="product_quantity_container">
+                                        <div class="product_quantity clearfix">
+                                            <span>Qty</span>
+                                            <input id="quantity_input" type="text" pattern="[0-9]*" value="{{ $item->qty }}">
+                                            <div class="quantity_buttons">
+                                                <div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+                                                <div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- Total -->
-                            <div class="cart_item_total">$790.90</div>
+                                <!-- Total -->
+                                <div class="cart_item_total">${{ $item->priceTotal() }}</div>
                         </div>
-
+                        @endforeach
                     </div>
                 </div>
                 <div class="row row_cart_buttons">
                     <div class="col">
                         <div class="cart_buttons d-flex flex-lg-row flex-column align-items-start justify-content-start">
-                            <div class="button continue_shopping_button"><a href="#">Continue shopping</a></div>
+                            <div class="button continue_shopping_button"><a href="/">Continue shopping</a></div>
                             <div class="cart_buttons_right ml-lg-auto">
-                                <div class="button clear_cart_button"><a href="#">Clear cart</a></div>
-                                <div class="button update_cart_button"><a href="#">Update cart</a></div>
+                                <div class="button clear_cart_button"><a href="{{ route('clear') }}">Clear cart</a></div>
                             </div>
                         </div>
                     </div>
@@ -115,20 +113,16 @@
                             <div class="cart_total_container">
                                 <ul>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
-                                        <div class="cart_total_title">Subtotal</div>
-                                        <div class="cart_total_value ml-auto">$790.90</div>
-                                    </li>
-                                    <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Shipping</div>
-                                        <div class="cart_total_value ml-auto">Free</div>
+                                        <div class="cart_total_value ml-auto">Courier</div>
                                     </li>
                                     <li class="d-flex flex-row align-items-center justify-content-start">
                                         <div class="cart_total_title">Total</div>
-                                        <div class="cart_total_value ml-auto">$790.90</div>
+                                        <div class="cart_total_value ml-auto">${{ $cart->first()->total() }}</div>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="button checkout_button"><a href="#">Proceed to checkout</a></div>
+                            <div class="button checkout_button"><a href="/checkout">Proceed to checkout</a></div>
                         </div>
                     </div>
                 </div>
