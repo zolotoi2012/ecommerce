@@ -62,6 +62,11 @@ Route::middleware('auth')->prefix('/admin')->group(function () {
     Route::resource('categories', 'Admin\CategoriesController');
     Route::resource('brands', 'Admin\BrandsController');
     Route::resource('images', 'Admin\ImagesController');
-    Route::get('solds', 'Admin\SoldsController@index');
+    Route::prefix('/solds')->group(function () {
+        Route::get('/', 'Admin\SoldsController@index');
+        Route::get('/today', 'Admin\SoldsController@day')->name('sold-today');
+        Route::get('/month', 'Admin\SoldsController@month')->name('sold-month');
+    });
+
 });
 Auth::routes();

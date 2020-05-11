@@ -19,7 +19,12 @@ class CreateSoldsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
-            $table->timestamps();
+            $table->integer('count');
+            $table->date('create_at');
+            $table->date('update_at');
+            $table->time('create_time');
+            $table->time('update_time');
+            $table->bigInteger('status_id');
         });
     }
 
